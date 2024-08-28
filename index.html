@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://assets.sapanalytics.cloud/production/api/widget/sac-widget-embed.js" type></script>
+        <script src=""></script>
+        <style>
+            html, body {
+                height: 100%;
+                margin: 0;
+            }
+            #WIDGET1 {
+                position: absolute;
+                box-sizing: border-box;
+                border: 1px solid #000;
+                width: 100%;
+                height: 100%;
+            }
+            #WIDGET1 {
+                top: 5px;
+                left: 5px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="WIDGET1"></div>
+    </body>
+    <script>   
+        // setup SDK to be done per application - https://wiki.one.int.sap/wiki/display/OrcaDev/Widget+APIs#WidgetAPIs-Initialize/setuptheSDK
+        sap.sac.api.widget.setup();
+  
+        // render widget - https://wiki.one.int.sap/wiki/display/OrcaDev/Widget+APIs#WidgetAPIs-AddinganSACWidget
+        const containerId = "WIDGET1";
+        const tenant = "https://mee-analytics.eu10.hcs.cloud.sap/sap/fpa/ui";
+        const storyId = "3E185D0526C6B797813F2F14992D3F0E";
+        const widgetId = "Chart_1";
+    	const options = "true";
+
+ 
+        function success() { console.log(`widget rendered successfully: ${storyId}`) };
+        function failure() { console.log(`unable to render widget: ${widgetId}`) };
+        sap.sac.api.widget.renderWidget(containerId, tenant, storyId,  widgetId, {renderComplete: {
+            onSuccess: success,
+            onFailure: failure
+        }})   
+     </script>
+</html>
